@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Random;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
@@ -36,9 +36,29 @@ public class main {
             chances = 3;
         }
 
-System.out.println(chances);
-        System.out.println(secret);
-        System.out.println(difficulty);
+        // GAME
+
+        while (chances > 0) {
+            System.out.println("What is your guess?");
+            int guess = scanner.nextInt();
+
+            if (guess == secret)  {
+                System.out.println("You win, well done!");
+                System.out.println(chances);
+                System.exit(0);
+            } else if (guess > secret)  {
+                System.out.println("Your guess is greater than the secret number!");
+                System.out.println(chances);
+                chances = chances - 1;
+            } else {
+                System.out.println("Your guess is less than the secret number!");
+                System.out.println(chances);
+                chances = chances - 1;
+            }
+        }
+
+        System.out.println("You lose!");
+
     }
 
     public static void showDifficultyMenu() {
@@ -48,4 +68,3 @@ System.out.println(chances);
         System.out.println("3. Hard (3 chances)");
 }   
 }
-
